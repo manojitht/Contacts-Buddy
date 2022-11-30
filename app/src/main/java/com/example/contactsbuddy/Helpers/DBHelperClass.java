@@ -15,12 +15,13 @@ public class DBHelperClass extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-
+        sqLiteDatabase.execSQL(DBConstants.CREATE_TABLE_QUERY);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + DBConstants.TABLE_NAME);
+        onCreate(sqLiteDatabase);
     }
 
     public long createContact(String contact_name, String contact_number, String contact_email, String contact_image, String added_on, String updated_on) {

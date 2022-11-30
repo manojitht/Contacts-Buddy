@@ -2,7 +2,7 @@ package com.example.contactsbuddy.Helpers;
 
 public class DBConstants {
     public static final int DB_VERSION = 1;
-    public static final String DB_NAME = "CONTACTS_BUDDY";
+    public static final String DB_NAME = "CONTACTS_BUDDY_DB";
     public static final String TABLE_NAME = "CONTACTS_TABLE";
     public static final String ID = "ID";
     public static final String CONTACT_NAME = "CONTACT_NAME";

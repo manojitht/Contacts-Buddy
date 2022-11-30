@@ -81,6 +81,13 @@ public class AddContact_Activity extends AppCompatActivity {
                 chooseContactImage();
             }
         });
+
+        save_contact_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                validateContactDetails();
+            }
+        });
     }
 
     private void chooseContactImage(){
@@ -285,6 +292,8 @@ public class AddContact_Activity extends AppCompatActivity {
 
         Toast.makeText(this, "" + contact_name + " was saved to our contacts list successfully!", Toast.LENGTH_LONG).show();
 //        onBackPressed();
+        Intent intent = new Intent(AddContact_Activity.this, ShowContactsList_Activity.class);
+        startActivity(intent);
     }
 
 }
