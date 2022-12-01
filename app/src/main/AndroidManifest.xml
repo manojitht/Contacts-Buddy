@@ -17,7 +17,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="ExtraText">
         <activity
-            android:name=".ViewContactDetails_Activity"
+            android:name=".Views.ViewContactDetails_Activity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
