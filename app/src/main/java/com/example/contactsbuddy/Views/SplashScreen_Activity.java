@@ -18,7 +18,7 @@ public class SplashScreen_Activity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashScreen_Activity.this, AddContact_Activity.class);
+                Intent intent = new Intent(SplashScreen_Activity.this, ShowContactsList_Activity.class);
                 startActivity(intent);
                 finish();
             }

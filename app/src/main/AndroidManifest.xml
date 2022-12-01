@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-<!--    read and write permission for the image picker of contacts buddy app-->
 
     <application
         android:allowBackup="true"
@@ -17,6 +16,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="ExtraText">
+        <activity
+            android:name=".ViewContactDetails_Activity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".Views.AddContact_Activity"
             android:exported="false">
