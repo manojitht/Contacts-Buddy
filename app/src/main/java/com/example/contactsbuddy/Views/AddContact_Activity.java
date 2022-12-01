@@ -75,6 +75,14 @@ public class AddContact_Activity extends AppCompatActivity {
 
         dbHelper = new DBHelperClass(this);
 
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AddContact_Activity.this, ShowContactsList_Activity.class);
+                startActivity(intent);
+            }
+        });
+
         cb_image_selector.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
