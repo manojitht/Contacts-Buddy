@@ -66,6 +66,21 @@ public class DBHelperClass extends SQLiteOpenHelper {
         return contactsList;
     }
 
+    public void updateContact(String id, String contact_name, String contact_number, String contact_email, String contact_image, String updated_on) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(DBConstants.CONTACT_NAME, contact_name);
+        values.put(DBConstants.CONTACT_NUMBER, contact_number);
+        values.put(DBConstants.CONTACT_EMAIL, contact_email);
+        values.put(DBConstants.CONTACT_IMAGE, contact_image);
+        values.put(DBConstants.UPDATED_ON, updated_on);
+
+        db.update(DBConstants.TABLE_NAME, values, DBConstants.ID + "=?", new String[]{id});
+
+        db.close();
+    }
+
     public void deleteContact(String id) {
         SQLiteDatabase db = getWritableDatabase();
         db.delete(DBConstants.TABLE_NAME, DBConstants.ID + "=?", new String[]{id});

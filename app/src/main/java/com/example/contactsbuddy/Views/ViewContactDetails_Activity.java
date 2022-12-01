@@ -79,6 +79,15 @@ public class ViewContactDetails_Activity extends AppCompatActivity {
             }
         });
 
+        edit_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ViewContactDetails_Activity.this, EditContactDetails_Activity.class);
+                intent.putExtra("ID", id);
+                startActivity(intent);
+            }
+        });
+
         delete_icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -136,7 +145,7 @@ public class ViewContactDetails_Activity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(ViewContactDetails_Activity.this);
         builder.setTitle("Delete Contact:")
                 .setMessage("Do you want to delete this contact permanently '" + contact_name + "' ?")
-                .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Yes, Delete", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dbHelper.deleteContact(id);
