@@ -8,17 +8,31 @@
     android:background="@color/light_blue">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/textView4"
+        android:layout_width="222dp"
+        android:layout_height="39dp"
         android:fontFamily="@font/nunito_extrabold"
         android:gravity="center"
         android:text="Contacts Buddy"
-        android:textColor="#EFF1F4"
-        android:textSize="32sp"
+        android:textColor="#fff"
+        android:textSize="28dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.457" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="74dp"
+        android:layout_height="74dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.182" />
-
+        app:layout_constraintVertical_bias="0.355"
+        app:srcCompat="@drawable/ic_baseline_phone_24"
+        app:tint="@color/white" />
 </androidx.constraintlayout.widget.ConstraintLayout>

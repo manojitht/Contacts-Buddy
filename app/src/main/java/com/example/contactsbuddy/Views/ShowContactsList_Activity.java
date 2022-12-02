@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.contactsbuddy.AdapterController.ContactListView_Adapter;
 import com.example.contactsbuddy.Helpers.DBConstants;
@@ -84,7 +85,7 @@ public class ShowContactsList_Activity extends AppCompatActivity {
                             search_contact_message.setVisibility(View.GONE);
                             contacts_list_view.setVisibility(View.VISIBLE);
                         }
-                        contacts_count.setText("Contacts: " +  contactListViewAdapter.getItemCount() + ".");
+                        contacts_count.setText("Contacts: " +  contactListViewAdapter.getItemCount());
                     } else {
                         renderContactsOnList(sortFromSelection);
                     }
@@ -113,7 +114,7 @@ public class ShowContactsList_Activity extends AppCompatActivity {
         contacts_list_view.setLayoutManager(linearLayoutManager);
         contactListViewAdapter = new ContactListView_Adapter(ShowContactsList_Activity.this, dbHelper.listAllContacts(sort_from));
         contacts_list_view.setAdapter(contactListViewAdapter);
-        contacts_count.setText("Contacts: " + dbHelper.totalContactsCount() + ".");
+        contacts_count.setText("Contacts: " + dbHelper.totalContactsCount());
     }
 
     private void sortOptionsList() {
@@ -127,15 +128,16 @@ public class ShowContactsList_Activity extends AppCompatActivity {
 
                         if (i == 0) {
                             renderContactsOnList(sort_name_inAsc);
-
+                            Toast.makeText(ShowContactsList_Activity.this, "Contacts showing in ascending order!", Toast.LENGTH_LONG).show();
                         } else if (i == 1) {
                             renderContactsOnList(sort_name_inDsc);
-
+                            Toast.makeText(ShowContactsList_Activity.this, "Contacts showing in descending order!", Toast.LENGTH_LONG).show();
                         } else if (i == 2) {
                             renderContactsOnList(sort_new_contacts);
-
+                            Toast.makeText(ShowContactsList_Activity.this, "Contacts showing in recently added!", Toast.LENGTH_LONG).show();
                         } else if (i == 3) {
                             renderContactsOnList(sort_old_contacts);
+                            Toast.makeText(ShowContactsList_Activity.this, "Contacts showing by old ones!", Toast.LENGTH_LONG).show();
                         }
                     }
                 }).show();

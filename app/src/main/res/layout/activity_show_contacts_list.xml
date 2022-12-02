@@ -20,13 +20,13 @@
             android:id="@+id/imageView"
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:src="@drawable/profile_avatar"
+            android:src="@drawable/contacts_buddy_logo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.051"
+            app:layout_constraintHorizontal_bias="0.043"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.52" />
+            app:layout_constraintVertical_bias="0.533" />
 
         <TextView
             android:id="@+id/textView"
@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/nunito_extrabold"
             android:text="Contacts: 05"
-            android:textColor="@color/light_blue"
+            android:textColor="@color/grey"
             android:textSize="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -74,7 +74,7 @@
         android:inputType="text"
         android:padding="15sp"
         android:textColor="@color/black"
-        android:textColorHint="@color/light_blue"
+        android:textColorHint="@color/grey"
         android:fontFamily="@font/nunito_extrabold"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -139,7 +139,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         app:backgroundTint="@color/light_blue"
-        android:src="@drawable/ic_baseline_phone_24"
+        android:src="@drawable/ic_plus_icon"
         app:tint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
