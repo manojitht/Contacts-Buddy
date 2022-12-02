@@ -134,7 +134,7 @@ public class ShowContactsList_Activity extends AppCompatActivity {
                             Toast.makeText(ShowContactsList_Activity.this, "Contacts showing in descending order!", Toast.LENGTH_LONG).show();
                         } else if (i == 2) {
                             renderContactsOnList(sort_new_contacts);
-                            Toast.makeText(ShowContactsList_Activity.this, "Contacts showing in recently added!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(ShowContactsList_Activity.this, "Contacts showing by recently added!", Toast.LENGTH_LONG).show();
                         } else if (i == 3) {
                             renderContactsOnList(sort_old_contacts);
                             Toast.makeText(ShowContactsList_Activity.this, "Contacts showing by old ones!", Toast.LENGTH_LONG).show();

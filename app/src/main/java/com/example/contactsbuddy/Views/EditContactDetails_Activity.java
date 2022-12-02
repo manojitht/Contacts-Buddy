@@ -327,17 +327,27 @@ public class EditContactDetails_Activity extends AppCompatActivity {
     private void updateContactDetails() {
         String timestamp = "" + System.currentTimeMillis();
 
-        dbHelper.updateContact(
-                "" + id,
-                "" + contact_name,
-                "" + contact_number,
-                "" + contact_email,
-                "" + imageUri,
-                "" + timestamp
-        );
-
+        if(imageUri == null){
+            dbHelper.updateContact(
+                    "" + id,
+                    "" + contact_name,
+                    "" + contact_number,
+                    "" + contact_email,
+                    "" + contact_image,
+                    "" + timestamp
+            );
+        }
+        else {
+            dbHelper.updateContact(
+                    "" + id,
+                    "" + contact_name,
+                    "" + contact_number,
+                    "" + contact_email,
+                    "" + imageUri,
+                    "" + timestamp
+            );
+        }
         Toast.makeText(this, "" + contact_name + " was updated to our contacts list successfully!", Toast.LENGTH_LONG).show();
-//        onBackPressed();
         Intent intent = new Intent(EditContactDetails_Activity.this, ShowContactsList_Activity.class);
         startActivity(intent);
     }
