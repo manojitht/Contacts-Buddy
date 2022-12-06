@@ -1,4 +1,4 @@
-package com.example.contactsbuddy.AdapterController;
+package com.example.contactsbuddy.Presenters;
 
 import android.content.Context;
 import android.content.Intent;

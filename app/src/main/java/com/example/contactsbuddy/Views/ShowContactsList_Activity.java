@@ -12,14 +12,12 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.contactsbuddy.AdapterController.ContactListView_Adapter;
+import com.example.contactsbuddy.Presenters.ContactListView_Adapter;
 import com.example.contactsbuddy.Helpers.DBConstants;
 import com.example.contactsbuddy.Helpers.DBHelperClass;
 import com.example.contactsbuddy.R;

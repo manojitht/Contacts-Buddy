@@ -67,7 +67,7 @@ public class DBHelperClass extends SQLiteOpenHelper {
     }
 
     public void updateContact(String id, String contact_name, String contact_number, String contact_email, String contact_image, String updated_on) {
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase contact_db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
         values.put(DBConstants.CONTACT_NAME, contact_name);
@@ -76,15 +76,15 @@ public class DBHelperClass extends SQLiteOpenHelper {
         values.put(DBConstants.CONTACT_IMAGE, contact_image);
         values.put(DBConstants.UPDATED_ON, updated_on);
 
-        db.update(DBConstants.TABLE_NAME, values, DBConstants.ID + "=?", new String[]{id});
+        contact_db.update(DBConstants.TABLE_NAME, values, DBConstants.ID + "=?", new String[]{id});
 
-        db.close();
+        contact_db.close();
     }
 
     public void deleteContact(String id) {
-        SQLiteDatabase db = getWritableDatabase();
-        db.delete(DBConstants.TABLE_NAME, DBConstants.ID + "=?", new String[]{id});
-        db.close();
+        SQLiteDatabase contact_db = getWritableDatabase();
+        contact_db.delete(DBConstants.TABLE_NAME, DBConstants.ID + "=?", new String[]{id});
+        contact_db.close();
     }
 
     public int totalContactsCount() {

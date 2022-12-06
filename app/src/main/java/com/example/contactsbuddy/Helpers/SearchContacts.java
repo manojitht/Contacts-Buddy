@@ -3,7 +3,7 @@ package com.example.contactsbuddy.Helpers;
 
 import android.widget.Filter;
 
-import com.example.contactsbuddy.AdapterController.ContactListView_Adapter;
+import com.example.contactsbuddy.Presenters.ContactListView_Adapter;
 import com.example.contactsbuddy.Models.ContactModel;
 
 import java.util.ArrayList;
