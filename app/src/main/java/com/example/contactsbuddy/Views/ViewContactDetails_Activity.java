@@ -9,10 +9,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
-import android.telephony.PhoneNumberUtils;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,7 +19,6 @@ import com.example.contactsbuddy.Helpers.DBHelperClass;
 import com.example.contactsbuddy.R;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -32,7 +28,7 @@ public class ViewContactDetails_Activity extends AppCompatActivity {
     private ImageView edit_icon, delete_icon, call_icon, message_icon, email_icon, back_btn;
     private TextView view_contact_name, c_contact_name, c_contact_number, c_contact_email;
     private String id, contact_name, contact_number, contact_email, contact_image, contact_added_on, contact_updated_on;
-    private DBHelperClass dbHelper;
+    private DBHelperClass dbHelperClass;
     private SimpleDateFormat simpleDateFormat;
 
     @Override
@@ -56,7 +52,7 @@ public class ViewContactDetails_Activity extends AppCompatActivity {
 
         simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
-        dbHelper = new DBHelperClass(this);
+        dbHelperClass = new DBHelperClass(this);
 
         call_icon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,7 +105,7 @@ public class ViewContactDetails_Activity extends AppCompatActivity {
         String selectQuery = "SELECT * FROM " + DBConstants.TABLE_NAME +
                 " WHERE " + DBConstants.ID + "=" + id;
 
-        SQLiteDatabase contact_db = dbHelper.getReadableDatabase();
+        SQLiteDatabase contact_db = dbHelperClass.getReadableDatabase();
         Cursor cursor = contact_db.rawQuery(selectQuery, null);
 
         if (cursor.moveToFirst()) {
@@ -122,14 +118,10 @@ public class ViewContactDetails_Activity extends AppCompatActivity {
                 contact_added_on = "" + cursor.getString(cursor.getColumnIndexOrThrow(DBConstants.ADDED_ON));
                 contact_updated_on = "" + cursor.getString(cursor.getColumnIndexOrThrow(DBConstants.UPDATED_ON));
 
-//                String date_added_on = simpleDateFormat.format(new Date(Long.parseLong(contact_added_on)));
-//                String date_last_updated = simpleDateFormat.format(new Date(Long.parseLong(contact_updated_on)));
-
                 view_contact_name.setText(contact_name);
                 c_contact_name.setText(contact_name);
                 c_contact_number.setText(contact_number);
                 c_contact_email.setText(contact_email);
-//                dates_tv.setText("Added on: " + date_added_on + "\n Lastly updated on: " + date_last_updated);
 
                 if (contact_image.equals("") || contact_image.equals("null")) {
                     contact_profile_image.setImageResource(R.drawable.profile_avatar);
@@ -148,12 +140,11 @@ public class ViewContactDetails_Activity extends AppCompatActivity {
                 .setPositiveButton("Yes, Delete", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        dbHelper.deleteContact(id);
+                        dbHelperClass.deleteContact(id);
                         Toast.makeText(ViewContactDetails_Activity.this, "" + contact_name + " deleted successfully!", Toast.LENGTH_LONG).show();
                         onBackPressed();
                     }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.dismiss();

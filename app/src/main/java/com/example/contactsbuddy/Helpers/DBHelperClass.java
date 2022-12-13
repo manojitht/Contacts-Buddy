@@ -29,16 +29,17 @@ public class DBHelperClass extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-    public long createContact(String contact_name, String contact_number, String contact_email, String contact_image, String added_on, String updated_on) {
+    public long createContact(String contact_name, String contact_number, String contact_email,
+                              String contact_image, String added_on, String updated_on) {
         SQLiteDatabase contact_db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(DBConstants.CONTACT_NAME, contact_name);
-        values.put(DBConstants.CONTACT_NUMBER, contact_number);
-        values.put(DBConstants.CONTACT_EMAIL, contact_email);
-        values.put(DBConstants.CONTACT_IMAGE, contact_image);
-        values.put(DBConstants.ADDED_ON, added_on);
-        values.put(DBConstants.UPDATED_ON, updated_on);
-        long result = contact_db.insert(DBConstants.TABLE_NAME, null, values);
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(DBConstants.CONTACT_NAME, contact_name);
+        contentValues.put(DBConstants.CONTACT_NUMBER, contact_number);
+        contentValues.put(DBConstants.CONTACT_EMAIL, contact_email);
+        contentValues.put(DBConstants.CONTACT_IMAGE, contact_image);
+        contentValues.put(DBConstants.ADDED_ON, added_on);
+        contentValues.put(DBConstants.UPDATED_ON, updated_on);
+        long result = contact_db.insert(DBConstants.TABLE_NAME, null, contentValues);
         contact_db.close();
         return result;
     }
@@ -58,7 +59,6 @@ public class DBHelperClass extends SQLiteOpenHelper {
                         "" + cursor.getString(cursor.getColumnIndexOrThrow(DBConstants.CONTACT_IMAGE)),
                         "" + cursor.getString(cursor.getColumnIndexOrThrow(DBConstants.ADDED_ON)),
                         "" + cursor.getString(cursor.getColumnIndexOrThrow(DBConstants.UPDATED_ON)));
-
                 contactsList.add(contact);
             } while (cursor.moveToNext());
         }
@@ -66,18 +66,16 @@ public class DBHelperClass extends SQLiteOpenHelper {
         return contactsList;
     }
 
-    public void updateContact(String id, String contact_name, String contact_number, String contact_email, String contact_image, String updated_on) {
+    public void updateContact(String id, String contact_name, String contact_number,
+                              String contact_email, String contact_image, String updated_on) {
         SQLiteDatabase contact_db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-
-        values.put(DBConstants.CONTACT_NAME, contact_name);
-        values.put(DBConstants.CONTACT_NUMBER, contact_number);
-        values.put(DBConstants.CONTACT_EMAIL, contact_email);
-        values.put(DBConstants.CONTACT_IMAGE, contact_image);
-        values.put(DBConstants.UPDATED_ON, updated_on);
-
-        contact_db.update(DBConstants.TABLE_NAME, values, DBConstants.ID + "=?", new String[]{id});
-
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(DBConstants.CONTACT_NAME, contact_name);
+        contentValues.put(DBConstants.CONTACT_NUMBER, contact_number);
+        contentValues.put(DBConstants.CONTACT_EMAIL, contact_email);
+        contentValues.put(DBConstants.CONTACT_IMAGE, contact_image);
+        contentValues.put(DBConstants.UPDATED_ON, updated_on);
+        contact_db.update(DBConstants.TABLE_NAME, contentValues, DBConstants.ID + "=?", new String[]{id});
         contact_db.close();
     }
 

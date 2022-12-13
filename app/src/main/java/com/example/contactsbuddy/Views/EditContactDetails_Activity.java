@@ -61,7 +61,7 @@ public class EditContactDetails_Activity extends AppCompatActivity {
 
     private String id, contact_name, contact_number, contact_email, contact_image;
 
-    private DBHelperClass dbHelper;
+    private DBHelperClass dbHelperClass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +79,7 @@ public class EditContactDetails_Activity extends AppCompatActivity {
         cameraPermissions = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
         storagePermissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
-        dbHelper = new DBHelperClass(this);
+        dbHelperClass = new DBHelperClass(this);
 
         id = getIntent().getStringExtra("ID");
 
@@ -111,7 +111,7 @@ public class EditContactDetails_Activity extends AppCompatActivity {
         String selectQuery = "SELECT * FROM " + DBConstants.TABLE_NAME +
                 " WHERE " + DBConstants.ID + "=" + id;
 
-        SQLiteDatabase contact_db = dbHelper.getReadableDatabase();
+        SQLiteDatabase contact_db = dbHelperClass.getReadableDatabase();
         Cursor cursor = contact_db.rawQuery(selectQuery, null);
 
         if (cursor.moveToFirst()) {
@@ -326,26 +326,13 @@ public class EditContactDetails_Activity extends AppCompatActivity {
 
     private void updateContactDetails() {
         String timestamp = "" + System.currentTimeMillis();
-
         if(imageUri == null){
-            dbHelper.updateContact(
-                    "" + id,
-                    "" + contact_name,
-                    "" + contact_number,
-                    "" + contact_email,
-                    "" + contact_image,
-                    "" + timestamp
-            );
+            dbHelperClass.updateContact("" + id, "" + contact_name, "" + contact_number,
+                    "" + contact_email, "" + contact_image, "" + timestamp);
         }
         else {
-            dbHelper.updateContact(
-                    "" + id,
-                    "" + contact_name,
-                    "" + contact_number,
-                    "" + contact_email,
-                    "" + imageUri,
-                    "" + timestamp
-            );
+            dbHelperClass.updateContact("" + id, "" + contact_name, "" + contact_number,
+                    "" + contact_email, "" + imageUri, "" + timestamp);
         }
         Toast.makeText(this, "" + contact_name + " was updated to our contacts list successfully!", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(EditContactDetails_Activity.this, ShowContactsList_Activity.class);
