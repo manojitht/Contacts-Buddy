@@ -23,7 +23,6 @@ public class SearchContacts extends Filter {
 
         if (charSequence != null && charSequence.length() > 0) {
             charSequence = charSequence.toString().toUpperCase();
-
             ArrayList<ContactModel> contactsList = new ArrayList<>();
 
             for (int i = 0; i < contactSearchList.size(); i++) {
@@ -31,10 +30,8 @@ public class SearchContacts extends Filter {
                     contactsList.add(contactSearchList.get(i));
                 }
             }
-            filterResults.count = contactsList.size();
             filterResults.values = contactsList;
         } else {
-            filterResults.count = contactSearchList.size();
             filterResults.values = contactSearchList;
         }
         return filterResults;

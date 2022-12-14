@@ -30,7 +30,6 @@ public class ShowContactsList_Activity extends AppCompatActivity {
     private FloatingActionButton contact_add_btn, contact_sort_btn;
     private LinearLayout search_contact_message;
     private RecyclerView contacts_list_view;
-    private TextView contacts_count;
 
     private DBHelperClass dbHelperClass;
     private ContactListView_Adapter contactListViewAdapter;
@@ -49,7 +48,6 @@ public class ShowContactsList_Activity extends AppCompatActivity {
         contact_sort_btn = (FloatingActionButton) findViewById(R.id.contact_sort_float_btn);
         search_contact_message = (LinearLayout) findViewById(R.id.search_results_message);
         contacts_list_view = (RecyclerView) findViewById(R.id.show_contact_list_view);
-        contacts_count = (TextView) findViewById(R.id.contact_count_txt);
         dbHelperClass = new DBHelperClass(this);
 
         sortFromSelection = sort_name_inAsc;
@@ -81,7 +79,6 @@ public class ShowContactsList_Activity extends AppCompatActivity {
                             search_contact_message.setVisibility(View.GONE);
                             contacts_list_view.setVisibility(View.VISIBLE);
                         }
-                        contacts_count.setText("Contacts: " +  contactListViewAdapter.getItemCount());
                     } else {
                         renderContactsOnList(sortFromSelection);
                     }
@@ -110,7 +107,6 @@ public class ShowContactsList_Activity extends AppCompatActivity {
         contacts_list_view.setLayoutManager(linearLayoutManager);
         contactListViewAdapter = new ContactListView_Adapter(ShowContactsList_Activity.this, dbHelperClass.listAllContacts(sort_from));
         contacts_list_view.setAdapter(contactListViewAdapter);
-        contacts_count.setText("Contacts: " + dbHelperClass.totalContactsCount());
     }
 
     private void sortOptionsList() {

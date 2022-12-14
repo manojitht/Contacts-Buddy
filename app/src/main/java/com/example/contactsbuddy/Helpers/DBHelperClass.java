@@ -84,13 +84,4 @@ public class DBHelperClass extends SQLiteOpenHelper {
         contact_db.delete(DBConstants.TABLE_NAME, DBConstants.ID + "=?", new String[]{id});
         contact_db.close();
     }
-
-    public int totalContactsCount() {
-        String countQuery = "SELECT * FROM " + DBConstants.TABLE_NAME;
-        SQLiteDatabase contact_db = this.getReadableDatabase();
-        Cursor cursor = contact_db.rawQuery(countQuery, null);
-        int count = cursor.getCount();
-        cursor.close();
-        return count;
-    }
 }
